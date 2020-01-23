@@ -15,6 +15,10 @@
     "@typescript-eslint/parser": "^2.17.0",
     "eslint": "^6.8.0",
     "git-commit-msg-linter": "^2.3.11",
+    "husky": "^4.2.0",
     "typescript": "^3.7.5"
+  },
+  "dependencies": {
+    "lint-staged": "^10.0.2"
   }
 }
