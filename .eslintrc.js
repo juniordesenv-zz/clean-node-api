@@ -4,8 +4,7 @@ module.exports = {
         "es6": true
     },
     "extends": [
-        "eslint:recommended",
-        "plugin:@typescript-eslint/eslint-recommended"
+        "airbnb-typescript/base"
     ],
     "globals": {
         "Atomics": "readonly",
@@ -20,5 +19,7 @@ module.exports = {
         "@typescript-eslint"
     ],
     "rules": {
+        "import/prefer-default-export": "off",
+        "no-underscore-dangle": "off",
     }
 };
