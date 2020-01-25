@@ -21,5 +21,12 @@ module.exports = {
     "rules": {
         "import/prefer-default-export": "off",
         "no-underscore-dangle": "off",
-    }
+        "class-methods-use-this": "off",
+    },
+    "overrides": [{
+        "files": [ "*.spec.ts" ],
+        "rules": {
+          "max-classes-per-file": 0
+        }
+    }]
 };
