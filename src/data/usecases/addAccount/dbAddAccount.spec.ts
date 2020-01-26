@@ -98,7 +98,7 @@ describe('DbAddAccount Usecase', () => {
       password: 'valid_password',
     };
     const promise = sut.add(accountData);
-    expect(promise).rejects.toThrow();
+    await expect(promise).rejects.toThrow();
   });
 
   test('Should return an account on success', async () => {
