@@ -1,7 +1,8 @@
-import { Controller, HttpRequest, HttpResponse } from '../../protocols';
+import {
+  Controller, HttpRequest, HttpResponse, Authentication,
+} from './login-protocols';
 import { badRequest, serverError, unauthorized } from '../../helpers/httpHelper';
 import { MissingParamError, InvalidParamError } from '../../errors';
-import { Authentication } from '../../../domain/usecases/authentication';
 
 import { EmailValidator } from '../signup/signup-protocols';
 
