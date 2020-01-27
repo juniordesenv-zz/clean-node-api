@@ -1,7 +1,9 @@
 import {
   Controller, HttpRequest, HttpResponse, Authentication,
 } from './login-protocols';
-import { badRequest, serverError, unauthorized } from '../../helpers/httpHelper';
+import {
+  badRequest, serverError, unauthorized, ok,
+} from '../../helpers/httpHelper';
 import { MissingParamError, InvalidParamError } from '../../errors';
 
 import { EmailValidator } from '../signup/signup-protocols';
@@ -33,7 +35,7 @@ export class LoginController implements Controller {
       if (!accessToken) {
         return unauthorized();
       }
-      return new Promise((resolve) => resolve());
+      return ok({ accessToken });
     } catch (error) {
       return serverError(error);
     }
