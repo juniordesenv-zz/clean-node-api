@@ -3,8 +3,9 @@ import { badRequest } from '../../helpers/httpHelper';
 import { MissingParamError } from '../../errors';
 
 export class LoginController implements Controller {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   async handle(httpRequest: HttpRequest): Promise<HttpResponse> {
-    return new Promise((resolve) => resolve(badRequest(new MissingParamError('email'))));
+    if (!httpRequest.body.email) return new Promise((resolve) => resolve(badRequest(new MissingParamError('email'))));
+    if (!httpRequest.body.password) return new Promise((resolve) => resolve(badRequest(new MissingParamError('password'))));
+    return new Promise((resolve) => resolve());
   }
 }
