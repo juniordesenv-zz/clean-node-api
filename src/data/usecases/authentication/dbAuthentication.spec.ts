@@ -153,4 +153,13 @@ describe('DbAuthentication UseCase', () => {
 
     await expect(promise).rejects.toThrow();
   });
+
+
+  test('Should return null if HashComparer returns false', async () => {
+    const { sut } = makeSut();
+
+    const accessToken = await sut.auth(makeFakeAuthentication());
+
+    expect(accessToken).toBe('any_token');
+  });
 });
