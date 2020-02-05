@@ -5,7 +5,7 @@ jest.mock('jsonwebtoken', () => ({
   sign: async (): Promise<string> => new Promise((resolve) => resolve('any_token')),
 }));
 
-const makeSut = () => new JwtAdapter('secret');
+const makeSut = (): JwtAdapter => new JwtAdapter('secret');
 
 describe('JWT ADapter', () => {
   test('Shoud call sign with correct', async () => {
