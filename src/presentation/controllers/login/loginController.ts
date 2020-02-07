@@ -6,14 +6,10 @@ import {
 } from '../../helpers/http/httpHelper';
 
 export class LoginController implements Controller {
-  private readonly validation: Validation;
-
-  private readonly authentication: Authentication;
-
-  constructor(authentication: Authentication, validation: Validation) {
-    this.validation = validation;
-    this.authentication = authentication;
-  }
+  constructor(
+    private readonly authentication: Authentication,
+    private readonly validation: Validation,
+  ) { }
 
   async handle(httpRequest: HttpRequest): Promise<HttpResponse> {
     try {
