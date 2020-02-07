@@ -1,6 +1,6 @@
 import {
   Controller, HttpRequest, HttpResponse, Authentication, Validation,
-} from './login-protocols';
+} from './loginControllerProtocols';
 import {
   badRequest, serverError, unauthorized, ok,
 } from '../../helpers/http/httpHelper';
