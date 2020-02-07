@@ -1,5 +1,5 @@
 import validator from 'validator';
-import { EmailValidator } from '../presentation/protocols/emailValidator';
+import { EmailValidator } from '../../../presentation/protocols/emailValidator';
 
 export class EmailValidatorAdapter implements EmailValidator {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
