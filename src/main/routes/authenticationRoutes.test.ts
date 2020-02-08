@@ -4,7 +4,7 @@ import app from '../config/app';
 
 import { MongoHelper } from '../../infra/db/mongodb/helpers/mongoHelper';
 
-describe('SignUp Routes', () => {
+describe('Authentication Routes', () => {
   beforeAll(async () => {
     await MongoHelper.connect(process.env.MONGO_URL);
   });
@@ -19,15 +19,17 @@ describe('SignUp Routes', () => {
   });
 
 
-  test('Should return an account on success', async () => {
-    await request(app)
-      .post('/api/signup')
-      .send({
-        name: 'Junior Miranda',
-        email: 'jr.miranda@outlook.com',
-        password: '123456',
-        passwordConfirmation: '123456',
-      })
-      .expect(200);
+  describe('POST /signup', () => {
+    test('Should return 200 on signup', async () => {
+      await request(app)
+        .post('/api/signup')
+        .send({
+          name: 'Junior Miranda',
+          email: 'jr.miranda@outlook.com',
+          password: '123456',
+          passwordConfirmation: '123456',
+        })
+        .expect(200);
+    });
   });
 });
