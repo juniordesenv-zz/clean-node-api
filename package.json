@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "sucrase-node src/main/server.ts",
+    "start": "node dist/main/server.js",
+    "build": "rimraf dist && tsc",
+    "dev": "sucrase-node src/main/server.ts",
     "test": "jest --silent --noStackTrace --runInBand",
     "test:verbose": "jest",
     "test:unit": "npm test -- --watch -c jest-unit-config.js",
@@ -17,6 +19,12 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@shelf/jest-mongodb": "^1.1.3",
+    "@types/bcrypt": "^3.0.0",
+    "@types/express": "^4.17.2",
+    "@types/mongodb": "^3.3.14",
+    "@types/supertest": "^2.0.8",
+    "@types/validator": "^12.0.1",
     "@types/jest": "^24.9.0",
     "@types/jsonwebtoken": "^8.3.7",
     "@types/node": "^13.1.8",
@@ -29,23 +37,18 @@
     "husky": "^4.2.0",
     "jest": "^25.1.0",
     "ts-jest": "^25.0.0",
+    "fast-glob": "^3.1.1",
+    "rimraf": "^3.0.2",
+    "supertest": "^4.0.2",
+    "lint-staged": "^10.0.2",
+    "sucrase": "^3.12.1",
     "typescript": "^3.7.5"
   },
   "dependencies": {
-    "@shelf/jest-mongodb": "^1.1.3",
-    "@types/bcrypt": "^3.0.0",
-    "@types/express": "^4.17.2",
-    "@types/mongodb": "^3.3.14",
-    "@types/supertest": "^2.0.8",
-    "@types/validator": "^12.0.1",
     "bcrypt": "^3.0.7",
     "express": "^4.17.1",
-    "fast-glob": "^3.1.1",
     "jsonwebtoken": "^8.5.1",
-    "lint-staged": "^10.0.2",
     "mongodb": "^3.5.2",
-    "sucrase": "^3.12.1",
-    "supertest": "^4.0.2",
     "validator": "^12.2.0"
   }
 }
