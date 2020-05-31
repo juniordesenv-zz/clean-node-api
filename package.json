@@ -11,7 +11,7 @@
     "down": "docker-compose down",
     "dev": "sucrase-node src/main/server.ts",
     "test": "jest --silent --noStackTrace --runInBand",
-    "test:verbose": "jest",
+    "test:verbose": "jest -c jest-integration-config.js",
     "test:unit": "npm test -- --watch -c jest-unit-config.js",
     "test:e2e": "npm test -- --watch -c jest-integration-config.js",
     "test:staged": "npm test -- --findRelatedTests",
