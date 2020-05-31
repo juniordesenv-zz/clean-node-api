@@ -1,11 +1,11 @@
 
 import {
   badRequest, serverError, ok, forbiden,
-} from '../../helpers/http/httpHelper';
+} from '../../../helpers/http/httpHelper';
 import {
   AddAccount, HttpResponse, HttpRequest, Controller, Validation, Authentication,
 } from './signupControllerProtocols';
-import { EmailInUseError } from '../../errors';
+import { EmailInUseError } from '../../../errors';
 
 
 export class SignUpController implements Controller {
