@@ -54,7 +54,7 @@ interface SutTypes {
   loadAccountByEmailRepositoryStub: LoadAccountByEmailRepository,
 }
 
-const makeSut = (): any => {
+const makeSut = (): SutTypes => {
   const hasherStub = makeHasher();
   const addAccountRepositoryStub = makeAddAccountRepository();
   const loadAccountByEmailRepositoryStub = makeLoadAccountByEmailRepository();
