@@ -1,3 +1,5 @@
+import { SurveyModel } from '../models';
+
 export interface SurveyAnswer {
   image: string;
   answer: string;
@@ -9,5 +11,5 @@ export interface AddSurveyModel {
 }
 
 export interface AddSurvey {
-  add (survey: AddSurveyModel): Promise<AddSurveyModel>
+  add (survey: AddSurveyModel): Promise<SurveyModel>
 }

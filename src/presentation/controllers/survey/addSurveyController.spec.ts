@@ -1,5 +1,5 @@
 import {
-  AddSurvey, AddSurveyModel, HttpRequest, Validation,
+  AddSurvey, AddSurveyModel, HttpRequest, Validation, SurveyModel,
 } from './addSurveyControllerProtocols';
 import { AddSurveyController } from './addSurveyController';
 import { badRequest, ok, serverError } from '../../helpers/http/httpHelper';
@@ -26,16 +26,18 @@ const makeValidation = (): Validation => {
   return new ValidationStub();
 };
 
-const makeFakeSurvey = () => ({
+const makeFakeSurvey = (): SurveyModel => ({
+  id: 'any_id',
   question: 'any_question',
   answers: [
     { image: 'any_image', answer: 'any_answer' },
   ],
 });
 
+
 const makeAddSurvey = (): AddSurvey => {
   class AddSurveyStub implements AddSurvey {
-    async add(data: AddSurveyModel): Promise<AddSurveyModel> {
+    async add(data: AddSurveyModel): Promise<SurveyModel> {
       return new Promise((resolve) => resolve(makeFakeSurvey()));
     }
   }
@@ -87,9 +89,8 @@ describe('AddSurvery Controller', () => {
   test('Should return 200 if valid data is correct', async () => {
     const { sut } = makeSut();
     const httpResponse = await sut.handle(makeFakeRequest());
-    console.log(httpResponse);
     expect(httpResponse).toEqual(ok({
-      ...makeFakeRequest().body,
+      ...makeFakeSurvey(),
     }));
   });
 
