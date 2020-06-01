@@ -1,7 +1,7 @@
 import { SurveyModel } from '../models';
 
 export interface SurveyAnswer {
-  image: string;
+  image?: string;
   answer: string;
 }
 

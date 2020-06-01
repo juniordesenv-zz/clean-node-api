@@ -12,7 +12,7 @@ const makeFakeSurveyData = (): AddSurveyModel => ({
 });
 
 
-const makeFakeSurveyModel = (): SurveyModel => ({
+const makeFakeSurvey = (): SurveyModel => ({
   id: 'any_id',
   question: 'any_question',
   answers: [
@@ -26,7 +26,7 @@ const makeFakeSurveyModel = (): SurveyModel => ({
 const makeAddSurveyRepository = () => {
   class AddSurveyRepositoryStub implements AddSurveyRepository {
     async add(surveyData: AddSurveyModel): Promise<SurveyModel> {
-      return new Promise((resolve) => resolve(makeFakeSurveyModel()));
+      return new Promise((resolve) => resolve(makeFakeSurvey()));
     }
   }
   return new AddSurveyRepositoryStub();
@@ -62,5 +62,12 @@ describe('DbAddSurvey UseCase', () => {
 
     const promise = sut.add(makeFakeSurveyData());
     expect(promise).rejects.toThrow();
+  });
+
+  test('Should return an survey on success', async () => {
+    const { sut } = makeSut();
+
+    const account = await sut.add(makeFakeSurveyData());
+    expect(account).toEqual(makeFakeSurvey());
   });
 });
