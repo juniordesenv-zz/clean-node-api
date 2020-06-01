@@ -1,6 +1,6 @@
 import { Router } from 'express';
 
-import { adaptRoute } from '../adapters/express/expressRouteAdapter';
+import { adaptRoute } from '../adapters/expressRouteAdapter';
 
 import { makeAddSuerveyController } from '../factories/controllers/survey/addSurveyControllerFactory';
 
