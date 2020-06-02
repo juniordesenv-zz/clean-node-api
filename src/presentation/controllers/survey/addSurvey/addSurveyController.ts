@@ -20,6 +20,7 @@ export class AddSurveyController implements Controller {
       const survey = await this.addSurvey.add({
         question,
         answers,
+        createdAt: new Date(),
       });
       return ok(survey);
     } catch (error) {

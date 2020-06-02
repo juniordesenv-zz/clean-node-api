@@ -1,10 +1,11 @@
 export type SurveyModel = {
-  id: string
-  question: string
+  id: string;
+  question: string;
   answers: SurveyAnswerModel[]
+  createdAt: Date;
 };
 
-type SurveyAnswerModel = {
+export type SurveyAnswerModel = {
   image?: string
   answer: string
 };
