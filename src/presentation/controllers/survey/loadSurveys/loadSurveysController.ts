@@ -1,6 +1,6 @@
 import { Controller, HttpRequest, HttpResponse } from '~/presentation/protocols';
 import { LoadSurveys } from '~/domain/usecases/loadSurveys';
-import { ok } from '~/presentation/helpers/http/httpHelper';
+import { ok, serverError } from '~/presentation/helpers/http/httpHelper';
 
 export class LoadSurveysController implements Controller {
   constructor(private readonly loadSurveys: LoadSurveys) {
@@ -8,7 +8,11 @@ export class LoadSurveysController implements Controller {
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   async handle(httpRequest: HttpRequest): Promise<HttpResponse> {
-    const surveys = await this.loadSurveys.load();
-    return ok(surveys);
+    try {
+      const surveys = await this.loadSurveys.load();
+      return ok(surveys);
+    } catch (error) {
+      return serverError(error);
+    }
   }
 }
