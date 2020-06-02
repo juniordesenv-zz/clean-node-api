@@ -18,7 +18,7 @@ const makeFakeAccount = (): AccountModel => ({
 
 const makeFakeRequest = (): HttpRequest => ({
   headers: {
-    Authorization: 'any_token',
+    authorization: 'any_token',
   },
 });
 
