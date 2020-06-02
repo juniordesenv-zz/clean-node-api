@@ -1,7 +1,41 @@
-import { SurveyModel } from '~/domain/models';
+import MockDate from 'mockdate';
 import { LoadSurveysController } from '~/presentation/controllers/survey/loadSurveys/loadSurveysController';
+import { LoadSurveys, SurveyModel } from './loadSurveysControllerProtocols';
+
+const makeFakeSurveys = (): SurveyModel[] => [
+  {
+    id: 'any_id',
+    question: 'any_question',
+    answers: [
+      {
+        image: 'any_image',
+        answer: 'any_answer',
+      },
+    ],
+    createdAt: new Date(),
+  },
+  {
+    id: 'other_id',
+    question: 'other_question',
+    answers: [
+      {
+        image: 'other_image',
+        answer: 'other_answer',
+      },
+    ],
+    createdAt: new Date(),
+  },
+];
 
 describe('LoadSurveys Controller', () => {
+  beforeAll(() => {
+    MockDate.set(new Date());
+  });
+
+  afterAll(() => {
+    MockDate.reset();
+  });
+
   test('Should call LoadSurveys', async () => {
     class LoadSurveysStub implements LoadSurveys {
       async load(): Promise<SurveyModel[]> {
@@ -12,6 +46,6 @@ describe('LoadSurveys Controller', () => {
     const loadSpy = jest.spyOn(loadSurveysStub, 'load');
     const sut = new LoadSurveysController(loadSurveysStub);
     sut.handle({});
-    expect(loadSpy).toHaveBeenCalled;
+    expect(loadSpy).toHaveBeenCalled();
   });
 });
