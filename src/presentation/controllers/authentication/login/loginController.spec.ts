@@ -6,7 +6,7 @@ import {
   badRequest, serverError, unauthorized, ok,
 } from '../../../helpers/http/httpHelper';
 import { MissingParamError } from '../../../errors';
-import { AuthenticationModel } from '../../../../domain/usecases/authentication';
+import { AuthenticationModel } from '~/domain/usecases/authentication';
 
 
 const makeValidation = (): Validation => {

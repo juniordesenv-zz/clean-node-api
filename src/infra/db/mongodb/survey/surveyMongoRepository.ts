@@ -1,7 +1,7 @@
-import { AddSurveyRepository } from '../../../../data/protocols/db/survey/addSurveyRepository';
-import { SurveyModel } from '../../../../domain/models';
+import { AddSurveyRepository } from '~/data/protocols/db/survey/addSurveyRepository';
+import { SurveyModel } from '~/domain/models';
 import { MongoHelper } from '../helpers/mongoHelper';
-import { AddSurveyModel } from '../../../../domain/usecases/addSurvey';
+import { AddSurveyModel } from '~/domain/usecases/addSurvey';
 import { LoadSurveysRepository } from '~/data/protocols/db/survey/loadSurveysRepository';
 
 export class SurveyMongoRepository implements AddSurveyRepository, LoadSurveysRepository {

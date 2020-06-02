@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 
-import { MongoHelper } from '../infra/db/mongodb/helpers/mongoHelper';
+import { MongoHelper } from '~/infra/db/mongodb/helpers/mongoHelper';
 
 import env from './config/env';
 
