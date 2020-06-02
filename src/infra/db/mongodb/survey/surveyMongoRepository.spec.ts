@@ -1,6 +1,6 @@
 import { Collection } from 'mongodb';
-import { MongoHelper } from '../helpers/mongoHelper';
-import { SurveyMongoRepository } from './surveyMongoRepository';
+import { MongoHelper } from '~/infra/db/mongodb/helpers/mongoHelper';
+import { SurveyMongoRepository } from '~/infra/db/mongodb/survey/surveyMongoRepository';
 
 let surveyCollection: Collection;
 describe('Account Mongo Repository', () => {

@@ -1,6 +1,6 @@
 import { AddSurveyRepository } from '~/data/protocols/db/survey/addSurveyRepository';
 import { SurveyModel } from '~/domain/models';
-import { MongoHelper } from '../helpers/mongoHelper';
+import { MongoHelper } from '~/infra/db/mongodb/helpers/mongoHelper';
 import { AddSurveyModel } from '~/domain/usecases/addSurvey';
 import { LoadSurveysRepository } from '~/data/protocols/db/survey/loadSurveysRepository';
 

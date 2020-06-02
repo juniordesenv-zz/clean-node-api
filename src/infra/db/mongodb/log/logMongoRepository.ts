@@ -1,5 +1,5 @@
 import { LogErrorRepository } from '~/data/protocols/db/log/logErrorRepository';
-import { MongoHelper } from '../helpers/mongoHelper';
+import { MongoHelper } from '~/infra/db/mongodb/helpers/mongoHelper';
 
 
 export class LogMongoRepository implements LogErrorRepository {

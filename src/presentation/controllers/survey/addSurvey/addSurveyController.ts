@@ -2,7 +2,7 @@ import {
   AddSurvey,
   Controller, HttpRequest, HttpResponse, Validation,
 } from './addSurveyControllerProtocols';
-import { badRequest, ok, serverError } from '../../../helpers/http/httpHelper';
+import { badRequest, ok, serverError } from '~/presentation/helpers/http/httpHelper';
 
 export class AddSurveyController implements Controller {
   constructor(

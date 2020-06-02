@@ -3,7 +3,7 @@ import { LoadAccountByEmailRepository } from '~/data/protocols/db/account/loadAc
 import { UpdateAccessTokenRepository } from '~/data/protocols/db/account/updateAccessTokenRepository';
 import { AddAccountModel } from '~/domain/usecases';
 import { AccountModel } from '~/domain/models';
-import { MongoHelper } from '../helpers/mongoHelper';
+import { MongoHelper } from '~/infra/db/mongodb/helpers/mongoHelper';
 
 export class AccountMongoRepository implements AddAccountRepository,
             LoadAccountByEmailRepository,
