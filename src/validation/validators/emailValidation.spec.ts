@@ -15,10 +15,10 @@ const makeEmailValidator = (): EmailValidator => {
 };
 
 
-interface SutTypes {
+type SutTypes = {
   sut: EmailValidation,
   emailValidatorStub: EmailValidator,
-}
+};
 
 const makeSut = (): SutTypes => {
   const emailValidatorStub = makeEmailValidator();

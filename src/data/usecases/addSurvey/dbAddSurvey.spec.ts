@@ -35,10 +35,10 @@ const makeAddSurveyRepository = () => {
   return new AddSurveyRepositoryStub();
 };
 
-interface SutTypes {
+type SutTypes = {
   sut: DbAddSurvey;
   addSurveyRepositoryStub: AddSurveyRepository;
-}
+};
 
 const makeSut = () => {
   const addSurveyRepositoryStub = makeAddSurveyRepository();
