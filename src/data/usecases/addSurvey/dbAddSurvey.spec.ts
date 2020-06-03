@@ -42,7 +42,7 @@ type SutTypes = {
   addSurveyRepositoryStub: AddSurveyRepository;
 };
 
-const makeSut = () => {
+const makeSut = (): SutTypes => {
   const addSurveyRepositoryStub = makeAddSurveyRepository();
   const sut = new DbAddSurvey(addSurveyRepositoryStub);
   return {
@@ -80,7 +80,7 @@ describe('DbAddSurvey UseCase', () => {
   test('Should return an survey on success', async () => {
     const { sut } = makeSut();
 
-    const account = await sut.add(makeFakeSurveyData());
-    expect(account).toEqual(makeFakeSurvey());
+    const survey = await sut.add(makeFakeSurveyData());
+    expect(survey).toEqual(makeFakeSurvey());
   });
 });
