@@ -1,17 +1,15 @@
 import { SignUpController } from './signupController';
+
 import {
-  AccountModel,
-  AddAccount,
-  AddAccountModel,
-  Validation,
-  Authentication,
-  AuthenticationModel,
-  HttpRequest,
-} from './signupControllerProtocols';
-import {
-  ok, serverError, badRequest, forbiden,
+  badRequest, serverError, ok, forbiden,
 } from '~/presentation/helpers/http/httpHelper';
+import {
+  HttpRequest, Validation,
+} from '~/presentation/protocols';
+import { AddAccount, AddAccountModel } from '~/domain/usecases';
+import { Authentication, AuthenticationModel } from '~/domain/usecases/authentication';
 import { EmailInUseError, MissingParamError, ServerError } from '~/presentation/errors';
+import { AccountModel } from '~/domain/models';
 
 const makeFakeAccount = (): AccountModel => ({
   id: 'valid_id',

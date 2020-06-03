@@ -1,11 +1,13 @@
 import {
   LoginController,
 } from './loginController';
-import { Validation, HttpRequest, Authentication } from './loginControllerProtocols';
 import {
   badRequest, serverError, unauthorized, ok,
 } from '~/presentation/helpers/http/httpHelper';
-import { AuthenticationModel } from '~/domain/usecases/authentication';
+import {
+  HttpRequest, Validation,
+} from '~/presentation/protocols';
+import { Authentication, AuthenticationModel } from '~/domain/usecases/authentication';
 import { MissingParamError } from '~/presentation/errors';
 
 
