@@ -3,7 +3,9 @@ import { MongoHelper } from '~/infra/db/mongodb/helpers/mongoHelper';
 import { SurveyMongoRepository } from '~/infra/db/mongodb/survey/surveyMongoRepository';
 
 let surveyCollection: Collection;
-describe('Account Mongo Repository', () => {
+const makeSut = (): SurveyMongoRepository => new SurveyMongoRepository();
+
+describe('Survey Mongo Repository', () => {
   beforeAll(async () => {
     await MongoHelper.connect(process.env.MONGO_URL);
   });
@@ -16,8 +18,6 @@ describe('Account Mongo Repository', () => {
     surveyCollection = await MongoHelper.getCollection('surveys');
     await surveyCollection.deleteMany({});
   });
-
-  const makeSut = (): SurveyMongoRepository => new SurveyMongoRepository();
 
   describe('add()', () => {
     test('Should add a survey on success', async () => {
@@ -78,6 +78,28 @@ describe('Account Mongo Repository', () => {
       const sut = makeSut();
       const surveys = await sut.loadAll();
       expect(surveys.length).toBe(0);
+    });
+  });
+
+  describe('loadById()', () => {
+    test('Should load survey by id on success', async () => {
+      const sut = makeSut();
+      const res = await surveyCollection
+        .insertOne(
+          {
+            question: 'any_question',
+            answers: [
+              {
+                image: 'any_image',
+                answer: 'any_answer',
+              },
+            ],
+            createdAt: new Date(),
+          },
+        );
+      const id = res.ops[0]._id;
+      const survey = await sut.loadById(id);
+      expect(survey).toBeTruthy();
     });
   });
 });
