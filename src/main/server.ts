@@ -1,8 +1,8 @@
 /* eslint-disable no-console */
 
-import { MongoHelper } from '~/infra/db/mongodb/helpers/mongoHelper';
 
 import env from './config/env';
+import { MongoHelper } from '~/infra/db/mongodb/helpers/mongo-helper';
 
 MongoHelper.connect(env.mongoUrl)
   .then(async () => {
