@@ -1,5 +1,5 @@
 import MockDate from 'mockdate';
-import { SaveSurveyResultRepository } from '~/data/protocols/db/surveyResult/save-survey-result-repository';
+import { SaveSurveyResultRepository } from '~/data/protocols/db/survey-result/save-survey-result-repository';
 import { DbSaveSurveyResult } from '~/data/usecases/survey-result/save-survey-result/db-save-survey-result';
 import { mockSaveSurveyResultParams, mockSurveyResultModel, throwError } from '~/domain/test';
 import { mockSaveSurveyResultRepository } from '~/data/test';
