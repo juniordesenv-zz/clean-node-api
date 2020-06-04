@@ -1,7 +1,7 @@
 import {
   HttpRequest, Validation,
 } from '~/presentation/protocols';
-import { Authentication, AuthenticationModel } from '~/domain/usecases/account/authentication';
+import { Authentication, AuthenticationParams } from '~/domain/usecases/account/authentication';
 import { MissingParamError } from '~/presentation/errors';
 import { LoginController } from '~/presentation/controllers/authentication/login/login-controller';
 import {
@@ -20,7 +20,7 @@ const makeValidation = (): Validation => {
 
 const makeAuthentication = (): Authentication => {
   class AuthenticationStub implements Authentication {
-    async auth(authenthication: AuthenticationModel): Promise<string> {
+    async auth(authenthication: AuthenticationParams): Promise<string> {
       return new Promise((resolve) => resolve('any_token'));
     }
   }

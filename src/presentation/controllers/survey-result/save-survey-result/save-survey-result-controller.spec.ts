@@ -5,7 +5,7 @@ import { LoadSurveyById } from '~/domain/usecases/survey/load-survey-by-id';
 import { SurveyModel } from '~/domain/models';
 import { forbiden, ok, serverError } from '~/presentation/helpers/http/http-helper';
 import { InvalidParamError } from '~/presentation/errors';
-import { SaveSurveyResult, SaveSurveyResultModel } from '~/domain/usecases/survey-result/save-survey-result';
+import { SaveSurveyResult, SaveSurveyResultParams } from '~/domain/usecases/survey-result/save-survey-result';
 import { SurveyResultModel } from '~/domain/models/survey-result';
 
 const makeFakeRequest = (): HttpRequest => ({
@@ -37,7 +37,7 @@ const makeFakeSurveyResult = (): SurveyResultModel => ({
 
 const makeFakeSaveSurveyResult = (): SaveSurveyResult => {
   class SaveSurveyResultStub implements SaveSurveyResult {
-    save(data: SaveSurveyResultModel): Promise<SurveyResultModel> {
+    save(data: SaveSurveyResultParams): Promise<SurveyResultModel> {
       return Promise.resolve(makeFakeSurveyResult());
     }
   }

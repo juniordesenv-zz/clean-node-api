@@ -5,10 +5,10 @@ import {
 import {
   HttpRequest, Validation,
 } from '~/presentation/protocols';
-import { Authentication, AuthenticationModel } from '~/domain/usecases/account/authentication';
+import { Authentication, AuthenticationParams } from '~/domain/usecases/account/authentication';
 import { EmailInUseError, MissingParamError, ServerError } from '~/presentation/errors';
 import { AccountModel } from '~/domain/models';
-import { AddAccount, AddAccountModel } from '~/domain/usecases/account/addAccount';
+import { AddAccount, AddAccountParams } from '~/domain/usecases/account/addAccount';
 import { SignupController } from '~/presentation/controllers/authentication/signup/signup-controller';
 
 const makeFakeAccount = (): AccountModel => ({
@@ -20,7 +20,7 @@ const makeFakeAccount = (): AccountModel => ({
 
 const makeAddAccount = (): AddAccount => {
   class AddAccountStub implements AddAccount {
-    async add(account: AddAccountModel): Promise<AccountModel> {
+    async add(account: AddAccountParams): Promise<AccountModel> {
       return new Promise((resolve) => resolve(makeFakeAccount()));
     }
   }
@@ -47,7 +47,7 @@ const makeFakeRequest = (): HttpRequest => ({
 
 const makeAuthentication = (): Authentication => {
   class AuthenticationStub implements Authentication {
-    async auth(authenthication: AuthenticationModel): Promise<string> {
+    async auth(authenthication: AuthenticationParams): Promise<string> {
       return new Promise((resolve) => resolve('any_token'));
     }
   }

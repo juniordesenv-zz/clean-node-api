@@ -4,7 +4,7 @@ import {
 } from '~/presentation/protocols';
 import { badRequest, ok, serverError } from '~/presentation/helpers/http/http-helper';
 import { SurveyModel } from '~/domain/models';
-import { AddSurvey, AddSurveyModel } from '~/domain/usecases/survey/add-survey';
+import { AddSurvey, AddSurveyParams } from '~/domain/usecases/survey/add-survey';
 import { AddSurveyController } from '~/presentation/controllers/survey/add-survey/add-survey-controller';
 
 const makeFakeRequest = (): HttpRequest => ({
@@ -42,7 +42,7 @@ const makeFakeSurvey = (): SurveyModel => ({
 
 const makeAddSurvey = (): AddSurvey => {
   class AddSurveyStub implements AddSurvey {
-    async add(data: AddSurveyModel): Promise<SurveyModel> {
+    async add(data: AddSurveyParams): Promise<SurveyModel> {
       return new Promise((resolve) => resolve(makeFakeSurvey()));
     }
   }

@@ -2,9 +2,9 @@ import MockDate from 'mockdate';
 import { SurveyModel } from '~/domain/models';
 import { AddSurveyRepository } from '~/data/protocols/db/survey/add-survey-repository';
 import { DbAddSurvey } from '~/data/usecases/survey/add-survey/db-add-survey';
-import { AddSurveyModel } from '~/domain/usecases/survey/add-survey';
+import { AddSurveyParams } from '~/domain/usecases/survey/add-survey';
 
-const makeFakeSurveyData = (): AddSurveyModel => ({
+const makeFakeSurveyData = (): AddSurveyParams => ({
   question: 'any_question',
   answers: [
     {
@@ -30,7 +30,7 @@ const makeFakeSurvey = (): SurveyModel => ({
 
 const makeAddSurveyRepository = () => {
   class AddSurveyRepositoryStub implements AddSurveyRepository {
-    async add(surveyData: AddSurveyModel): Promise<SurveyModel> {
+    async add(surveyData: AddSurveyParams): Promise<SurveyModel> {
       return new Promise((resolve) => resolve(makeFakeSurvey()));
     }
   }
