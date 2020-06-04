@@ -1,5 +1,4 @@
 import { Hasher } from '~/data/protocols/cryptography/hasher';
-import { AccountModel } from '~/domain/models';
 import { AddAccountRepository } from '~/data/protocols/db/account/add-account-repository';
 import { DbAddAccount } from '~/data/usecases/account/add-account/db-add-account';
 import { LoadAccountByEmailRepository } from '~/data/protocols/db/account/load-account-by-email-repository';
@@ -84,7 +83,7 @@ describe('DbAddAccount Usecase', () => {
     const { sut, loadAccountByEmailRepositoryStub } = makeSut();
 
     jest.spyOn(loadAccountByEmailRepositoryStub, 'loadByEmail')
-      .mockResolvedValueOnce(new Promise((resolve) => resolve(mockAccountModel())));
+      .mockResolvedValueOnce(Promise.resolve(mockAccountModel()));
 
     const account = await sut.add(mockAddAccountParams());
     expect(account).toEqual(null);

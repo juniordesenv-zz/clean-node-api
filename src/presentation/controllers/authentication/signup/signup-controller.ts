@@ -9,7 +9,6 @@ import {
 import { Authentication } from '~/domain/usecases/account/authentication';
 import { AddAccount } from '~/domain/usecases/account/addAccount';
 
-
 export class SignupController implements Controller {
   constructor(
     private readonly addAccount: AddAccount,

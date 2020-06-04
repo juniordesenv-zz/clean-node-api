@@ -9,7 +9,7 @@ export const mockAddSurvey = (): AddSurvey => {
   class AddSurveyStub implements AddSurvey {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     async add(data: AddSurveyParams): Promise<SurveyModel> {
-      return new Promise((resolve) => resolve(mockSurveyModel()));
+      return Promise.resolve(mockSurveyModel());
     }
   }
   return new AddSurveyStub();
@@ -19,7 +19,7 @@ export const mockAddSurvey = (): AddSurvey => {
 export const mockLoadSurverys = (): LoadSurveys => {
   class LoadSurveysStub implements LoadSurveys {
     async load(): Promise<SurveyModel[]> {
-      return new Promise((resolve) => resolve(mockSurveysModel()));
+      return Promise.resolve(mockSurveysModel());
     }
   }
   return new LoadSurveysStub();

@@ -1,4 +1,5 @@
 /* eslint-disable no-console */
+import 'module-alias/register';
 
 
 import env from './config/env';

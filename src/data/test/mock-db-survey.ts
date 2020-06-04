@@ -10,7 +10,7 @@ export const mockAddSurveyRepository = () => {
   class AddSurveyRepositoryStub implements AddSurveyRepository {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     async add(surveyData: AddSurveyParams): Promise<SurveyModel> {
-      return new Promise((resolve) => resolve(mockSurveyModel()));
+      return Promise.resolve(mockSurveyModel());
     }
   }
   return new AddSurveyRepositoryStub();
@@ -21,7 +21,7 @@ export const mockLoadSurveyByIdRepository = (): LoadSurveyByIdRepository => {
   class LoadSurveysRepositoryStub implements LoadSurveyByIdRepository {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     async loadById(id: string): Promise<SurveyModel> {
-      return new Promise((resolve) => resolve(mockSurveyModel()));
+      return Promise.resolve(mockSurveyModel());
     }
   }
   return new LoadSurveysRepositoryStub();
@@ -30,7 +30,7 @@ export const mockLoadSurveyByIdRepository = (): LoadSurveyByIdRepository => {
 export const mockLoadSurveysRepository = (): LoadSurveysRepository => {
   class LoadSurveysRepositoryStub implements LoadSurveysRepository {
     async loadAll(): Promise<SurveyModel[]> {
-      return new Promise((resolve) => resolve(mockSurveysModel()));
+      return Promise.resolve(mockSurveysModel());
     }
   }
   return new LoadSurveysRepositoryStub();

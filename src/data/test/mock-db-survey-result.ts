@@ -7,7 +7,7 @@ export const mockSaveSurveyResultRepository = () => {
   class SaveSurveyResultRepositoryStub implements SaveSurveyResultRepository {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     async save(data: SaveSurveyResultParams): Promise<SurveyResultModel> {
-      return new Promise((resolve) => resolve(mockSurveyResultModel()));
+      return Promise.resolve(mockSurveyResultModel());
     }
   }
   return new SaveSurveyResultRepositoryStub();

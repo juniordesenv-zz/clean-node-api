@@ -2,8 +2,8 @@ import jwt from 'jsonwebtoken';
 import { JwtAdapter } from '~/infra/criptography/jwt-adapter/jwt-adapter';
 
 jest.mock('jsonwebtoken', () => ({
-  sign: async (): Promise<string> => new Promise((resolve) => resolve('any_token')),
-  verify: async (): Promise<string> => new Promise((resolve) => resolve('any_value')),
+  sign: async (): Promise<string> => Promise.resolve('any_token'),
+  verify: async (): Promise<string> => Promise.resolve('any_value'),
 }));
 
 const makeSut = (): JwtAdapter => new JwtAdapter('secret');

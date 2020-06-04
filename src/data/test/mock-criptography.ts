@@ -8,7 +8,7 @@ export const mockHasher = (): Hasher => {
   class HasherStub implements Hasher {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     async hash(value: string): Promise<string> {
-      return new Promise((resolve) => resolve('hashed_password'));
+      return Promise.resolve('hashed_password');
     }
   }
   return new HasherStub();
@@ -18,7 +18,7 @@ export const mockDecrypter = (): Decrypter => {
   class DecrypterStub implements Decrypter {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     async decrypt(value: string): Promise<string> {
-      return new Promise((resolve) => resolve('any_data'));
+      return Promise.resolve('any_data');
     }
   }
   return new DecrypterStub();
@@ -28,7 +28,7 @@ export const mockEncrypter = (): Encrypter => {
   class EncrypterStub implements Encrypter {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     async encrypt(id: string): Promise<string> {
-      return new Promise((resolve) => resolve('any_token'));
+      return Promise.resolve('any_token');
     }
   }
 
@@ -40,7 +40,7 @@ export const mockHashComparer = (): HashComparer => {
   class HashComparerStub implements HashComparer {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     async compare(value: string, hash: string): Promise<boolean> {
-      return new Promise((resolve) => resolve(true));
+      return Promise.resolve(true);
     }
   }
 
