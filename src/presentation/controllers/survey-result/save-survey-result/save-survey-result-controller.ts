@@ -16,6 +16,7 @@ export class SaveSurveyResultController implements Controller {
       const { surveyId } = httpRequest.params;
       const { accountId } = httpRequest;
       const survey = await this.loadSurveyById.loadById(surveyId);
+      console.log('has survey', survey);
       if (survey) {
         const answers = survey.answers.map((a) => a.answer);
         if (!answers.includes(answer)) {

@@ -1,41 +1,9 @@
 import MockDate from 'mockdate';
-import { SurveyModel } from '~/domain/models';
 import { AddSurveyRepository } from '~/data/protocols/db/survey/add-survey-repository';
 import { DbAddSurvey } from '~/data/usecases/survey/add-survey/db-add-survey';
-import { AddSurveyParams } from '~/domain/usecases/survey/add-survey';
+import { throwError, mockAddSurveyParams, mockSurveyModel } from '~/domain/test';
+import { mockAddSurveyRepository } from '~/data/test';
 
-const makeFakeSurveyData = (): AddSurveyParams => ({
-  question: 'any_question',
-  answers: [
-    {
-      image: 'any_image',
-      answer: 'any_answer ',
-    },
-  ],
-  createdAt: new Date(),
-});
-
-
-const makeFakeSurvey = (): SurveyModel => ({
-  id: 'any_id',
-  question: 'any_question',
-  answers: [
-    {
-      image: 'any_image',
-      answer: 'any_answer ',
-    },
-  ],
-  createdAt: new Date(),
-});
-
-const makeAddSurveyRepository = () => {
-  class AddSurveyRepositoryStub implements AddSurveyRepository {
-    async add(surveyData: AddSurveyParams): Promise<SurveyModel> {
-      return new Promise((resolve) => resolve(makeFakeSurvey()));
-    }
-  }
-  return new AddSurveyRepositoryStub();
-};
 
 type SutTypes = {
   sut: DbAddSurvey;
@@ -43,7 +11,7 @@ type SutTypes = {
 };
 
 const makeSut = (): SutTypes => {
-  const addSurveyRepositoryStub = makeAddSurveyRepository();
+  const addSurveyRepositoryStub = mockAddSurveyRepository();
   const sut = new DbAddSurvey(addSurveyRepositoryStub);
   return {
     sut,
@@ -63,7 +31,7 @@ describe('DbAddSurvey UseCase', () => {
   test('Should call AddSurveyRepository', async () => {
     const { sut, addSurveyRepositoryStub } = makeSut();
     const addSpy = jest.spyOn(addSurveyRepositoryStub, 'add');
-    const surveyData = makeFakeSurveyData();
+    const surveyData = mockAddSurveyParams();
     await sut.add(surveyData);
     expect(addSpy).toHaveBeenCalledWith(surveyData);
   });
@@ -71,16 +39,16 @@ describe('DbAddSurvey UseCase', () => {
 
   test('Should throw if AddSurveyRepository throws', async () => {
     const { sut, addSurveyRepositoryStub } = makeSut();
-    jest.spyOn(addSurveyRepositoryStub, 'add').mockReturnValueOnce(new Promise((resolve, reject) => reject(new Error())));
+    jest.spyOn(addSurveyRepositoryStub, 'add').mockImplementationOnce(throwError);
 
-    const promise = sut.add(makeFakeSurveyData());
+    const promise = sut.add(mockAddSurveyParams());
     expect(promise).rejects.toThrow();
   });
 
   test('Should return an survey on success', async () => {
     const { sut } = makeSut();
 
-    const survey = await sut.add(makeFakeSurveyData());
-    expect(survey).toEqual(makeFakeSurvey());
+    const survey = await sut.add(mockAddSurveyParams());
+    expect(survey).toEqual(mockSurveyModel());
   });
 });

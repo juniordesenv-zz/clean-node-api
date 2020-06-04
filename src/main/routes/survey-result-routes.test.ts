@@ -9,7 +9,7 @@ import { MongoHelper } from '~/infra/db/mongodb/helpers/mongo-helper';
 let surveyCollection: Collection;
 let accountCollection: Collection;
 
-const makeAccessToken = async (role?: string): Promise<string> => {
+const mockAccessToken = async (role?: string): Promise<string> => {
   const res = await accountCollection.insertOne({
     name: 'Junior Miranda',
     email: 'jr.miranda@outlook.com',
@@ -56,7 +56,7 @@ describe('Surveys Routes', () => {
 
 
     test('Should return 200 on add survey with valid token', async () => {
-      const accessToken = await makeAccessToken();
+      const accessToken = await mockAccessToken();
 
       const res = await surveyCollection.insertOne({
         question: 'Question',
