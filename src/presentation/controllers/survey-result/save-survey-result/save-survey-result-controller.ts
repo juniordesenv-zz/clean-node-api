@@ -1,6 +1,6 @@
 import { Controller, HttpRequest, HttpResponse } from '~/presentation/protocols';
 import { LoadSurveyById } from '~/domain/usecases/survey/load-survey-by-id';
-import { forbiden, serverError } from '~/presentation/helpers/http/http-helper';
+import { forbiden, ok, serverError } from '~/presentation/helpers/http/http-helper';
 import { InvalidParamError } from '~/presentation/errors';
 import { SaveSurveyResult } from '~/domain/usecases/survey-result/save-survey-result';
 
@@ -24,13 +24,13 @@ export class SaveSurveyResultController implements Controller {
       } else {
         return forbiden(new InvalidParamError('surveyId'));
       }
-      await this.saveSurveyResult.save({
+      const surveyResult = await this.saveSurveyResult.save({
         accountId,
         surveyId,
         answer,
         createdAt: new Date(),
       });
-      return null;
+      return ok(surveyResult);
     } catch (error) {
       return serverError(error);
     }
