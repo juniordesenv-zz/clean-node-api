@@ -27,7 +27,6 @@ const makeAccessToken = async (role?: string): Promise<string> => {
   });
   return accessToken;
 };
-makeAccessToken();
 
 describe('Surveys Routes', () => {
   beforeAll(async () => {
@@ -56,25 +55,30 @@ describe('Surveys Routes', () => {
     });
 
 
-    // test('Should return 200 on add survey with valid token', async () => {
-    //   const accessToken = await makeAccessToken('admin');
-    //
-    //   await request(app)
-    //     .post('/api/surveys')
-    //     .set('Authorization', accessToken)
-    //     .send({
-    //       question: 'Question',
-    //       answers: [
-    //         {
-    //           answer: 'Answer 1',
-    //           image: 'http://image-name.com',
-    //         },
-    //         {
-    //           answer: 'Answer 2',
-    //         },
-    //       ],
-    //     })
-    //     .expect(200);
-    // });
+    test('Should return 200 on add survey with valid token', async () => {
+      const accessToken = await makeAccessToken();
+
+      const res = await surveyCollection.insertOne({
+        question: 'Question',
+        answers: [
+          {
+            answer: 'Answer 1',
+            image: 'http://image-name.com',
+          },
+          {
+            answer: 'Answer 2',
+          },
+        ],
+        createdAt: new Date(),
+      });
+
+      await request(app)
+        .put(`/api/surveys/${res.ops[0]._id}/results`)
+        .set('Authorization', accessToken)
+        .send({
+          answer: 'Answer 1',
+        })
+        .expect(200);
+    });
   });
 });
