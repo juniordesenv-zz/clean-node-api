@@ -4,8 +4,11 @@ import { SaveSurveyResultRepository } from '~/data/protocols/db/survey-result/sa
 import { SaveSurveyResultParams } from '~/domain/usecases/survey-result/save-survey-result';
 import { MongoHelper } from '~/infra/db/mongodb/helpers/mongo-helper';
 import { QueryBuilder } from '~/infra/db/mongodb/helpers/query-builder';
+import { LoadSurveyResultRepository } from '~/data/protocols/db/survey-result/load-survey-result-repository';
 
-export class SurveyResultMongoRepository implements SaveSurveyResultRepository {
+export class SurveyResultMongoRepository implements
+  SaveSurveyResultRepository,
+  LoadSurveyResultRepository {
   async save(data: SaveSurveyResultParams): Promise<SurveyResultModel> {
     const surveyResultCollection = await MongoHelper.getCollection('surveyResults');
     await surveyResultCollection.findOneAndUpdate({
