@@ -3,7 +3,7 @@ import { Router } from 'express';
 
 import { adminAuth, auth } from '~/main/middlewares';
 import { adaptRoute } from '~/main/adapters/express-route-adapter';
-import { makeLoadSuerveysController } from '~/main/factories/controllers/survey/load-surveys/loadSurveysControllerFactory';
+import { makeLoadSuerveysController } from '~/main/factories/controllers/survey/load-surveys/load-surveys-controller-factory';
 import { makeAddSuerveyController } from '~/main/factories/controllers/survey/add-survey/add-survey-controller-factory';
 
 
