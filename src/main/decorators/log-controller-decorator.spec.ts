@@ -5,7 +5,7 @@ import { LogErrorRepository } from '~/data/protocols/db/log/log-error-repository
 import { mockAccountModel } from '~/domain/test';
 import { mockLogErrorRepository } from '~/data/test';
 
-const mockFakeRequest = (): HttpRequest => (
+const mockRequest = (): HttpRequest => (
   {
     body: {
       email: 'any_mail@mail.com',
@@ -60,14 +60,14 @@ describe('LogController decorator', () => {
     const { sut, controllerStub } = makeSut();
     const handleSpy = jest.spyOn(controllerStub, 'handle');
 
-    await sut.handle(mockFakeRequest());
-    expect(handleSpy).toHaveBeenCalledWith(mockFakeRequest());
+    await sut.handle(mockRequest());
+    expect(handleSpy).toHaveBeenCalledWith(mockRequest());
   });
 
   test('Should return the same result of the controller', async () => {
     const { sut } = makeSut();
 
-    const httpResponse = await sut.handle(mockFakeRequest());
+    const httpResponse = await sut.handle(mockRequest());
     expect(httpResponse).toEqual(ok(mockAccountModel()));
   });
 
@@ -77,7 +77,7 @@ describe('LogController decorator', () => {
     const logSpy = jest.spyOn(logErrorRepositoryStub, 'logError');
     jest.spyOn(controllerStub, 'handle').mockReturnValueOnce(Promise.resolve(makeFakeServerError()));
 
-    await sut.handle(mockFakeRequest());
+    await sut.handle(mockRequest());
     expect(logSpy).toHaveBeenCalledWith('any_stack');
   });
 });

@@ -1,7 +1,7 @@
 import { HttpRequest, Middleware } from '~/presentation/protocols';
 import { LoadAccountByToken } from '~/domain/usecases/account/loadAccountByToken';
 import { AccessDeniedError } from '~/presentation/errors/access-denied-error';
-import { forbiden, ok, serverError } from '~/presentation/helpers/http/http-helper';
+import { forbidden, ok, serverError } from '~/presentation/helpers/http/http-helper';
 
 export class AuthMiddleware implements Middleware {
   constructor(
@@ -21,7 +21,7 @@ export class AuthMiddleware implements Middleware {
           });
         }
       }
-      return forbiden(new AccessDeniedError());
+      return forbidden(new AccessDeniedError());
     } catch (error) {
       return serverError(error);
     }
