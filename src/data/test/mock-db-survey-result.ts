@@ -1,7 +1,7 @@
 // eslint-disable-next-line max-classes-per-file
 import { SaveSurveyResultRepository } from '~/data/protocols/db/survey-result/save-survey-result-repository';
 import { SaveSurveyResultParams } from '~/domain/usecases/survey-result/save-survey-result';
-import { SurveyResultModel } from '~/domain/models/survey-result';
+import { SurveyResultModel } from '~/domain/models';
 import { mockSurveyResultModel } from '~/domain/test';
 import { LoadSurveyResultRepository } from '~/data/protocols/db/survey-result/load-survey-result-repository';
 

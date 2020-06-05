@@ -4,6 +4,8 @@ module.exports = {
   collectCoverageFrom: [
     '<rootDir>/src/**/*.ts',
     '!<rootDir>/src/main/**',
+    '!<rootDir>/src/presentation/protocols/index.ts',
+    '!<rootDir>/src/domain/models/index.ts',
     '!**/test/**',
   ],
   coverageDirectory: 'coverage',
